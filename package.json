@@ -2,9 +2,5 @@
   "name": "test",
   "version": "1.0.0",
   "description": "",
-  "main": "middleware.js",
-  "scripts": {
-  },
-  "author": "",
-  "license": "ISC"
+  "type": "module"
 }
