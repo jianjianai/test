@@ -1,8 +1,17 @@
 async function handleRequest(request, method) {
-    // Extract headers
+    // Extract headers - handle multiple headers with same name
     const headers = {};
     for (const [key, value] of request.headers.entries()) {
-        headers[key] = value;
+        if (headers[key]) {
+            // If header already exists, convert to array or append to array
+            if (Array.isArray(headers[key])) {
+                headers[key].push(value);
+            } else {
+                headers[key] = [headers[key], value];
+            }
+        } else {
+            headers[key] = value;
+        }
     }
     
     // Extract body (handle potential errors gracefully)
